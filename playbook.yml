@@ -1,0 +1,17 @@
+- name: test
+  hosts: localhost
+  become: true
+  serial: 1
+  vars:
+      test: "test"
+#  vars_files:
+#    - "{{ lookup('ansible.builtin.env', 'VARS_FILE') }}"
+  pre_tasks: 
+    - ansible.builtin.include_vars:
+        dir: vars
+        depth: 1
+  tasks:
+    - name: echo
+      ansible.builtin.debug:
+        msg: "{{ test }}"
+
