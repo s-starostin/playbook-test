@@ -1,7 +1,5 @@
 - name: test
-  hosts: localhost
-  become: true
-  serial: 1
+  hosts: all
   vars:
       test: "test"
 #  vars_files:
