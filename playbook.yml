@@ -8,8 +8,7 @@
 #    - "{{ lookup('ansible.builtin.env', 'VARS_FILE') }}"
   pre_tasks: 
     - ansible.builtin.include_vars:
-        dir: vars
-        depth: 1
+        file: "{{ lookup('ansible.builtin.env', 'ADDITIONAL_VARS_FILE') | default('default/vars.yml', True) }}"
   tasks:
     - name: echo
       ansible.builtin.debug:
