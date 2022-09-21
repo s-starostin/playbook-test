@@ -2,11 +2,9 @@
   hosts: all
   vars:
       test: "test"
-#  vars_files:
-#    - "{{ lookup('ansible.builtin.env', 'VARS_FILE') }}"
   pre_tasks: 
     - ansible.builtin.include_vars:
-        file: "{{ lookup('ansible.builtin.env', 'ADDITIONAL_VARS_FILE') | default('default/vars.yml', True) }}"
+        file: "{{ lookup('ansible.builtin.env', 'ADDITIONAL_VARS_FILE') | default('vars/default.yml', True) }}"
   tasks:
     - name: echo
       ansible.builtin.debug:
